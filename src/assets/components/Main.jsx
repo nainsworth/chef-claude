@@ -4,16 +4,14 @@ import { useState } from "react";
 const Main = () => {
   const [ingredients, setIngredients] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const addIngredient = (formData) => {
     const newIngredient = formData.get("ingredient");
     setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
   };
 
   return (
     <main>
-      <form className="ingredient-form" onSubmit={handleSubmit}>
+      <form className="ingredient-form" action={addIngredient}>
         <input
           type="text"
           placeholder="e.g. oregano"
