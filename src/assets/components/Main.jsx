@@ -19,23 +19,28 @@ const Main = () => {
         />
         <button>+ Add Ingredient</button>
       </form>
-      <div className="ingredient-list">
-        <h2>Ingredients on hand:</h2>
-        <ul>
-          {ingredients.map((ingredient, index) => (
-            <li className="list-item" key={index}>
-              {ingredient}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="get-recipe-container">
-        <div className="get-recipe-text">
-          <h3>Ready for Recipe</h3>
-          <p>Generate a recipe from your list of ingredients</p>
-        </div>
-        <button>Get a recipe</button>
-      </div>
+
+      {ingredients.length > 0 && (
+        <>
+          <div className="ingredient-list">
+            <h2>Ingredients on hand:</h2>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <li className="list-item" key={index}>
+                  {ingredient}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="get-recipe-container">
+            <div className="get-recipe-text">
+              <h3>Ready for Recipe</h3>
+              <p>Generate a recipe from your list of ingredients</p>
+            </div>
+            <button>Get a recipe</button>
+          </div>
+        </>
+      )}
     </main>
   );
 };
