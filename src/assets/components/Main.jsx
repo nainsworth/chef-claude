@@ -18,8 +18,8 @@ const Main = () => {
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   };
 
-  const showRecipe = () => {
-    setIsRecipeShown(!isRecipeShown);
+  const toggleRecipeShown = () => {
+    setIsRecipeShown(prevShown => !prevShown);
   };
 
   return (
@@ -53,7 +53,7 @@ const Main = () => {
                 <h3>Ready for Recipe</h3>
                 <p>Generate a recipe from your list of ingredients</p>
               </div>
-              <button onClick={showRecipe}>Get a recipe</button>
+              <button onClick={toggleRecipeShown}>Get a recipe</button>
             </div>
           )}
         </>
