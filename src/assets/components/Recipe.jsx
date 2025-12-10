@@ -1,14 +1,15 @@
-const Recipe = () => {
+const Recipe = (props) => {
   return (
     <div className="recipe-details">
       <div className="suggested-recipe">
-        <h2>Suggested Recipe:</h2>
+        {props.recipe}
+        {/* <h2>Suggested Recipe:</h2>
         <p>
           Based on your available ingredients, I would recommend making a Creamy
           Garlic Parmesan Chicken dish. Here's the recipe
-        </p>
+        </p> */}
       </div>
-      <div className="suggested-ingredients">
+      {/* <div className="suggested-ingredients">
         <h3>Ingredients:</h3>
         <ul>
           <li>1 lb. ground beef</li>
@@ -24,8 +25,8 @@ const Recipe = () => {
             8 oz pasta of your choice (e.g., spaghetti, penne, or linguine)
           </li>
         </ul>
-      </div>
-      <div className="suggested-instructions">
+      </div> */}
+      {/* <div className="suggested-instructions">
         <h3>Instructions:</h3>
         <ol>
           <li>Bring a large pot of salted water to a boil for the pasta.</li>
@@ -60,7 +61,7 @@ const Recipe = () => {
           </li>
         </ol>
         <p>Enjoy!</p>
-      </div>
+      </div> */}
     </div>
   );
 };

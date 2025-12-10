@@ -2,27 +2,20 @@ import { useState } from "react";
 import GenerateRecipe from "./GenerateRecipe";
 import Ingredients from "./Ingredients";
 import Recipe from "./Recipe";
+import { getRecipeFromAI } from "../../ai";
 
 const Main = () => {
-  const [ingredients, setIngredients] = useState([
-    "chicken",
-    "garlic",
-    "parmesan cheese",
-    "heavy cream",
-    "butter",
-    "olive oil",
-    "salt",
-    "pepper",
-  ]);
-  const [isRecipeShown, setIsRecipeShown] = useState(false);
+  const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState("");
 
   const addIngredient = (formData) => {
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   };
 
-  const toggleRecipeShown = () => {
-    setIsRecipeShown((prevShown) => !prevShown);
+  const getRecipe = async () => {
+    const recipeMarkdown = await getRecipeFromAI(ingredients);
+    setRecipe(recipeMarkdown);
   };
 
   return (
@@ -39,11 +32,9 @@ const Main = () => {
 
       {ingredients.length > 0 && <Ingredients ingredients={ingredients} />}
 
-      {ingredients.length > 3 && (
-        <GenerateRecipe handleClick={toggleRecipeShown} />
-      )}
+      {ingredients.length > 3 && <GenerateRecipe handleClick={getRecipe} />}
 
-      {isRecipeShown && <Recipe />}
+      {recipe && <Recipe recipe={recipe} />}
     </main>
   );
 };
